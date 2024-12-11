@@ -8,63 +8,68 @@
         /* Global Styles */
         body {
             margin: 0;
-            font-family: 'Roboto', sans-serif;
+            font-family: Arial, sans-serif;
             background: linear-gradient(120deg, #4a90e2, #7f53ac);
             color: #fff;
             overflow-x: hidden;
         }
 
-        /* Background Effects */
+        /* Background Animation */
         .background {
             position: fixed;
             width: 100%;
             height: 100%;
-            z-index: -1;
-            perspective: 1000px;
+            background: linear-gradient(120deg, #4a90e2, #7f53ac);
             overflow: hidden;
+            z-index: -1;
         }
 
-        .background .dot {
+        .background::before {
+            content: "";
             position: absolute;
-            width: 8px;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 50%;
-            animation: float 8s infinite linear;
-            transform-origin: center;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: float 10s infinite;
         }
 
         @keyframes float {
             0% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-20px); }
             100% { transform: translateY(0); }
         }
 
-        /* Card Styling */
+        /* Business Card */
         .card {
-            max-width: 500px;
-            margin: 80px auto;
-            padding: 20px;
+            max-width: 600px;
+            margin: 50px auto;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             text-align: center;
-            backdrop-filter: blur(10px);
         }
 
         .card h1 {
+            margin: 0;
             font-size: 2em;
-            margin-bottom: 5px;
-            color: #ffffff;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
         }
 
         .card p {
-            font-size: 1.2em;
             margin: 10px 0;
+            line-height: 1.6;
         }
 
-        /* Contact Icons */
         .contact-icons {
             display: flex;
             justify-content: center;
@@ -73,77 +78,68 @@
         }
 
         .contact-icons a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             width: 50px;
             height: 50px;
             background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 1.5em;
-            transition: transform 0.3s, background 0.3s;
+            transition: background 0.3s;
         }
 
         .contact-icons a:hover {
-            transform: scale(1.1);
             background: rgba(255, 255, 255, 0.4);
         }
 
-        /* Button Styling */
         .button {
             display: inline-block;
             padding: 10px 20px;
-            font-size: 1em;
-            color: #fff;
             background: #7f53ac;
             border-radius: 25px;
+            color: #fff;
             text-decoration: none;
             font-weight: bold;
-            transition: transform 0.3s, background 0.3s;
+            transition: background 0.3s;
         }
 
         .button:hover {
-            transform: scale(1.05);
             background: #5e3b8d;
         }
 
         /* Services Section */
         .services {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin: 50px 0;
+            flex-wrap: nowrap;
+            overflow-x: auto;
             padding: 20px;
+            gap: 15px;
+            scroll-snap-type: x mandatory;
         }
 
         .service-card {
-            flex: 1 1 calc(30% - 40px);
+            flex: 0 0 80%;
             max-width: 300px;
-            padding: 20px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
+            padding: 15px;
+            border-radius: 12px;
+            scroll-snap-align: start;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .service-card h3 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
+            margin: 0 0 10px;
+            font-size: 1.2em;
         }
 
-        .service-card p {
-            font-size: 1em;
-            line-height: 1.6;
-        }
-
-        /* Footer */
+        /* Footer Section */
         .footer {
             text-align: center;
             padding: 20px;
             background: rgba(0, 0, 0, 0.2);
-            font-size: 1em;
         }
 
         .footer a {
@@ -151,16 +147,25 @@
             text-decoration: none;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
+        @media (min-width: 768px) {
+            .card {
+                max-width: 600px;
+            }
+
+            .services {
+                justify-content: center;
+            }
+
             .service-card {
-                flex: 1 1 calc(100% - 40px);
+                flex: 0 0 30%;
             }
         }
     </style>
 </head>
 <body>
-    <div class="background" id="background"></div>
+    <div class="background">
+        <div class="particles"></div>
+    </div>
 
     <div class="card">
         <h1>Ismail Pattanmarthodi</h1>
@@ -170,11 +175,11 @@
 
         <div class="contact-icons">
             <a href="tel:+971503911432" title="Call"><span>📞</span></a>
-            <a href="mailto:ismailkoppam007@gmail.com?subject=Inquiry%20for%20Foxbee%20Services&body=Hello%20Ismail,%20I%20am%20interested%20in%20your%20services."><span>✉️</span></a>
-            <a href="https://wa.me/+971503911432?text=Hello%20Ismail,%20I%20am%20interested%20in%20discussing%20Foxbee's%20services."><span>💬</span></a>
+            <a href="mailto:ismailkoppam007@gmail.com?subject=Inquiry%20for%20Foxbee%20Services&body=Hello%20Ismail,%20I%20am%20interested%20in%20your%20services." title="Email"><span>✉️</span></a>
+            <a href="https://wa.me/+971503911432?text=Hello%20Ismail,%20I%20am%20interested%20in%20discussing%20Foxbee's%20services." title="WhatsApp"><span>💬</span></a>
         </div>
 
-        <a href="data:text/vcard;charset=utf-8,%EF%BB%BFBEGIN%3AVCARD%0AVERSION%3A3.0%0AN%3APattanmarthodi%3BIsmail%0AFN%3AIsmail%20Pattanmarthodi%0AORG%3AFoxbee%20Management%20Consultancy%0ATEL%3BTYPE%3DCELL%3A+971503911432%0AEMAIL%3Aismailkoppam007@gmail.com%0AEND%3AVCARD" class="button">Add to Contact</a>
+        <a href="data:text/vcard;charset=utf-8,%EF%BB%BFBEGIN%3AVCARD%0AVERSION%3A3.0%0AN%3APattanmarthodi%3BIsmail%0AFN%3AIsmail%20Pattanmarthodi%0AORG%3AFoxbee%20Management%20Consultancy%0ATEL%3BTYPE%3DCELL%3A+971503911432%0AEMAIL%3Aismailkoppam007@gmail.com%0AEND%3AVCARD" download="IsmailPattanmarthodi.vcf" class="button">Add to Contact</a>
     </div>
 
     <div class="services">
@@ -201,26 +206,5 @@
         <p>Built by <strong>Etra</strong> for Foxbee Management Consultancy</p>
         <a href="http://www.foxbee.ae">www.foxbee.ae</a>
     </div>
-
-    <script>
-        const background = document.getElementById("background");
-
-        // Create background dots
-        for (let i = 0; i < 70; i++) {
-            const dot = document.createElement("div");
-            dot.classList.add("dot");
-            dot.style.top = `${Math.random() * 100}%`;
-            dot.style.left = `${Math.random() * 100}%`;
-            dot.style.animationDuration = `${Math.random() * 5 + 5}s`;
-            background.appendChild(dot);
-        }
-
-        // Apply device motion effect
-        window.addEventListener("deviceorientation", (event) => {
-            const x = event.gamma / 10; // Horizontal tilt
-            const y = event.beta / 10;  // Vertical tilt
-            background.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
-        });
-    </script>
 </body>
 </html>
