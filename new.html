@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foxbee Management Consultancy</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(120deg, #4a90e2, #7f53ac);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Background Animation */
+        .background {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, #4a90e2, #7f53ac);
+            overflow: hidden;
+            z-index: -1;
+        }
+        .background::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: float 10s infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Business Card */
+        .card {
+            max-width: 90%;
+            margin: 50px auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .card h1 {
+            margin: 0;
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        .card p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .contact-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .contact-icons a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.5em;
+            transition: transform 0.3s;
+        }
+
+        .contact-icons a:hover {
+            transform: scale(1.2);
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #7f53ac;
+            border-radius: 25px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .button:hover {
+            background: #5e3b8d;
+        }
+
+        /* Services Section */
+        .services {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            padding: 20px;
+            gap: 15px;
+            scroll-snap-type: x mandatory;
+        }
+
+        .service-card {
+            flex: 0 0 80%;
+            max-width: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 12px;
+            scroll-snap-align: start;
+            text-align: center;
+        }
+
+        .service-card h3 {
+            margin: 0 0 10px;
+            font-size: 1.2em;
+        }
+
+        /* Footer Section */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .footer a {
+            color: #4a90e2;
+            text-decoration: none;
+        }
+
+        @media (min-width: 768px) {
+            .card {
+                max-width: 600px;
+            }
+
+            .services {
+                justify-content: center;
+            }
+
+            .service-card {
+                flex: 0 0 30%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="particles"></div>
+    </div>
+
+    <div class="card">
+        <img src="profile-placeholder.png" alt="Profile">
+        <h1>Ismail Pattanmarthodi</h1>
+        <p>Sales & Marketing</p>
+        <p>Foxbee Management Consultancy</p>
+        <p>"Auditing, Tax Consulting, Bookkeeping, Internal Auditing"</p>
+
+        <div class="contact-icons">
+            <a href="tel:+971503911432">📞</a>
+            <a href="mailto:ismailkoppam007@gmail.com">✉️</a>
+            <a href="https://wa.me/+971503911432?text=Hello%20Ismail,%20I%20am%20interested%20in%20discussing%20Foxbee's%20services.%20">💬</a>
+        </div>
+
+        <a href="#" class="button">Add Contact</a>
+    </div>
+
+    <div class="services">
+        <div class="service-card">
+            <h3>Auditing Services</h3>
+            <p>Ensure compliance and accuracy with professional auditing services.</p>
+        </div>
+        <div class="service-card">
+            <h3>Tax Consulting</h3>
+            <p>Optimize your tax strategies for better financial outcomes.</p>
+        </div>
+        <div class="service-card">
+            <h3>Bookkeeping</h3>
+            <p>Accurate and up-to-date financial records to streamline your business.</p>
+        </div>
+        <div class="service-card">
+            <h3>Internal Auditing</h3>
+            <p>Improve internal processes with comprehensive audits.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>"Empowering Growth, Securing Futures"</p>
+        <a href="http://www.foxbee.ae">www.foxbee.ae</a>
+    </div>
+</body>
+</html>
